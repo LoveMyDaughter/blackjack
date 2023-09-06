@@ -90,7 +90,20 @@ class Game:
         game_number = 0
         games_to_play = 0
 
-        games_to_play = int(input("How many games do you want to play?"))
+        while games_to_play <= 0:
+            try:
+                games_to_play = int(input("How many games do you want to play?"))
+            except:
+                print("You must enter a number.")
+
+        while game_number < games_to_play:
+            game_number += 1
+
+            deck = Deck()
+            deck.shuffle()
+
+            player_hand = Hand()
+            dealer_hand = Hand(dealer=True)
 
 g = Game()
 g.play()
